@@ -45,5 +45,58 @@ function displayGame(myGame) {
     displayDiv.appendChild(gameInfo);
 }
 function isAllDataValid() {
+    var isValid = true;
+    resetErrorMessages();
+    if (!isTextPresent("title", "Title is required")) {
+        isValid = false;
+    }
+    if (!isTextPresent("price", "Price is required") || !isNumber("price", "Please enter a integer")) {
+        isValid = false;
+    }
+    if (!isOptionSelected("rating", "You must select a rating")) {
+        isValid = false;
+    }
+    return isValid;
+}
+function resetErrorMessages() {
+    var allSpans = document.querySelectorAll("Form > span");
+    for (var i = 0; i < allSpans.length; i++) {
+        var currSpan = allSpans[i];
+        if (currSpan.hasAttribute("data-required")) {
+            currSpan.innerText = "*";
+        }
+        else {
+            currSpan.innerText = "";
+        }
+    }
+}
+function isTextPresent(id, errMsg) {
+    var textBox = getById(id);
+    var txtBoxValue = textBox.value;
+    if (txtBoxValue == "") {
+        var errSpan = textBox.nextElementSibling;
+        errSpan.innerText = errMsg;
+        return false;
+    }
+    return true;
+}
+function isOptionSelected(id, errMsg) {
+    var optionSelect = getById(id);
+    var rating = optionSelect.value;
+    if (rating == "") {
+        var errSpan = optionSelect.nextElementSibling;
+        errSpan.innerText = errMsg;
+        return false;
+    }
+    return true;
+}
+function isNumber(id, errMsg) {
+    var textBox = getById(id);
+    var txtBoxValue = (textBox.value);
+    if (isNaN(parseFloat(txtBoxValue))) {
+        var errSpan = textBox.nextElementSibling;
+        errSpan.innerText = errMsg;
+        return false;
+    }
     return true;
 }

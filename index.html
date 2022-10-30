@@ -10,27 +10,26 @@
 <body>
     <h1>Add Video Game</h1>
 
-    <div id="validation-summary">
-        <p>Errors go here</p>
-    </div>
-
     <form>
         <label for="title">Title:</label>
         <input id="title" type="text">
+        <span data-required>*</span>
         <br>
 
         <label for="price">Price:</label>
         <input id="price" type="text">
+        <span data-required>*</span>
         <br>
 
         <label for="rating">Rating:</label>
         <select id="rating">
-            <option>Please choose a rating</option>
+            <option value="">Please choose a rating</option>
             <option>E</option>
             <option>T</option>
             <option>M</option>
             <option>NR</option>
         </select>
+        <span id="rating-error" data-required>*</span>
         <br>
         
         <input type="checkbox" id="online">
@@ -41,7 +40,7 @@
     </form>
 
     <div id="display">
-        
+
     </div>
 
     <script src="js/main.js"></script>
