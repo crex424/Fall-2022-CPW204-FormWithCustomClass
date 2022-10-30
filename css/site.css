@@ -8,9 +8,12 @@ label {
     text-align: right;
 }
 
+form > span {
+    color: red;
+}
+
 input[type=checkbox], input[type=button] {
     margin-left: 50%;
-    margin-right: 50%;
 }
 
 @media only screen and (max-width: 475px) {
